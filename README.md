@@ -1,1 +1,1 @@
-# Blackbox of yogurt
+# Black box of yogurt
