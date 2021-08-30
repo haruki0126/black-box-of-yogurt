@@ -1,0 +1,107 @@
+body{
+    background: black;
+    color: white;
+    margin: 0;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+/* 縦横中央揃え */
+.center{
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; height: 98%;
+    display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.w100{
+    width: 100%;
+}
+.h100{
+    height: 100%;
+}
+
+
+/* タイトル */
+.title {
+    font-size: 38%;
+    text-align: center;
+    margin: 5%;
+}
+h1{
+    margin: 0;
+}
+/* 下部リンク */
+.return {
+    text-align: center;
+    margin: 5%;
+}
+h2{ 
+    font-size:  30%;
+    margin: 0;
+    color: gray;
+}
+
+
+/* ポスター */
+.flexbox{
+    display: flex;
+    margin: 0 5% 0 5%;
+}
+.poster {
+    width:22%;
+    margin: auto;
+    cursor:pointer;
+}
+
+
+
+/* オーバーレイ */
+#pop-up01{
+    display: none;
+}
+.overlay01{
+    display: none;
+    animation: fadeOut 0.2s ease 0s 1 normal;
+}
+#pop-up01:checked + .overlay01{
+    animation: fadeIn 0.2s ease 0s 1 normal;
+
+    display: block;
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: #000000dd;
+    z-index: 10;
+}
+@keyframes fadeIn {
+    0% {opacity: 0}
+    100% {opacity: 1}
+}
+  
+
+
+/* ウィンドウ */
+.window{
+    max-width: 90%;
+    height: 90%;
+    margin: 0 auto 0 auto;
+}
+
+/* ポップポスターサイズ */
+.pop-size{
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0 auto 0 auto;
+}
+
+/* 閉じる */
+.switch{
+    margin: 5% auto 0 auto;
+    color: #ffffffa1;
+    font-size: 120%;
+    text-align: center;
+    cursor:pointer;
+    width:20%;
+}
