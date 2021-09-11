@@ -64,25 +64,65 @@ h1 {
 
 /* ポスター選択 */
 
-.contents {
+.contentsBox {
     display: flex;
     margin: 0 2% 0 2%;
     text-align: center;
 }
 
+.contents {
+    display: flex;
+    text-align: center;
+}
+
+/* 携帯のみ（縦並び）*/
+
+@media screen and (max-width:639px) {
+    .contentsBox {
+        flex-direction: column;
+        padding: 0 2% 0 2%;
+    }
+    /* 調整 */
+    .contents {
+        margin: 1%;
+    }
+}
+
 .poster {
-    width: 20%;
+    width: 40%;
     margin: auto;
+}
+
+/* 携帯のみ（ポスターサイズ調整）*/
+
+@media screen and (max-width:639px) {
+    .poster {
+        width: 45%;
+    }
+}
+
+.maxTop {
+    max-width: 100%;
+}
+
+.maxTop:hover {
+    animation: darken 1s ease 0s 1 normal;
+    filter: brightness(60%);
+    cursor: pointer;
 }
 
 .max {
     max-width: 100%;
-    cursor: pointer;
 }
 
-.max:hover {
-    animation: darken 1s ease 0s 1 normal;
-    filter: brightness(60%);
+/* PCのみ（解説表示切り替えホバー） */
+
+@media screen and (min-width:640px) {
+    .max:hover {
+        animation: darken 1s ease 0s 1 normal;
+        filter: brightness(60%);
+        cursor: pointer;
+    }
 }
 
 @keyframes darken {
@@ -138,12 +178,16 @@ h1 {
     margin: 5% auto 5% auto;
 }
 
-.closeArea {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+/* PCのみ（画面外クリックで閉じる） */
+
+@media screen and (min-width:640px) {
+    .closeArea {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
 }
 
 .info {
@@ -151,6 +195,14 @@ h1 {
     width: 100%;
     height: 100%;
     position: relative;
+}
+
+/* 携帯のみ（縦並び）*/
+
+@media screen and (max-width:639px) {
+    .info {
+        flex-direction: column;
+    }
 }
 
 /* ポスター */
@@ -161,36 +213,45 @@ h1 {
     z-index: 100;
 }
 
+@media screen and (max-width:639px) {
+    .imageArea {
+        width: 97%;
+        margin: 30% 0 2% 0;
+    }
+}
+
 /* 解説 */
 
 #more01, #more02, #more03, #more04 {
     display: none;
 }
 
-.textArea {
-    display: none;
-    overflow-y: hidden;
-    /* フェードイン */
-    animation: fadeIn 1s ease 0s 1 normal;
-}
+/* PCのみ（解説表示切り替え） */
 
-#more01:checked+.textArea, #more02:checked+.textArea, #more03:checked+.textArea, #more04:checked+.textArea {
-    display: block;
-    width: 100%;
-    height: 100%;
-    overflow-y: scroll;
-}
-
-#more01:checked+.textArea:before, #more02:checked+.textArea:before, #more03:checked+.textArea:before, #more04:checked+.textArea:before {
-    pointer-events: none;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    min-height: 100px;
-    content: "";
-    background: linear-gradient( rgb(20, 20, 20) 5%, transparent 15%, transparent 85%, rgb(20, 20, 20) 95%);
+@media screen and (min-width:640px) {
+    .textArea {
+        display: none;
+        overflow-y: auto;
+        /* フェードイン */
+        animation: fadeIn 1s ease 0s 1 normal;
+    }
+    #more01:checked+.textArea, #more02:checked+.textArea, #more03:checked+.textArea, #more04:checked+.textArea {
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+    }
+    #more01:checked+.textArea:before, #more02:checked+.textArea:before, #more03:checked+.textArea:before, #more04:checked+.textArea:before {
+        pointer-events: none;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        min-height: 100px;
+        content: "";
+        background: linear-gradient( rgb(20, 20, 20) 5%, transparent 15%, transparent 85%, rgb(20, 20, 20) 95%);
+    }
 }
 
 .text {
@@ -211,6 +272,7 @@ h1 {
 .figure {
     width: 90%;
     margin: auto auto 10% auto;
+    text-align: center;
 }
 
 .fig {
@@ -225,9 +287,10 @@ h1 {
 /* 閉じる */
 
 .closePoint {
-    position: absolute;
-    top: 0;
-    right: 0;
+    top: 5%;
+    right: 10%;
+    position: fixed;
+    z-index: 100;
 }
 
 .X-close {
@@ -236,7 +299,6 @@ h1 {
     cursor: pointer;
     font-family: sans-serif;
     padding: 50%;
-    z-index: 30;
 }
 
 .bottomPoint:hover .X-close {
@@ -277,27 +339,31 @@ footer {
 }
 
 .textAbout {
-    overflow-y: hidden;
-    /* フェードイン */
+    /* overflow-y: hidden; */
     animation: fadeIn 1s ease 0s 1 normal;
     display: block;
     width: 100%;
-    height: 100%;
-    overflow-y: scroll;
 }
 
-.textAbout:before {
-    pointer-events: none;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    min-height: 100px;
-    content: "";
-    background: linear-gradient( rgb(20, 20, 20) 5%, transparent 15%, transparent 85%, rgb(20, 20, 20) 95%);
-}
+/* PCのみ（スクロールボックス） */
 
+@media screen and (min-width:640px) {
+    .textAbout {
+        height: 100%;
+        overflow-y: scroll;
+    }
+    .textAbout:before {
+        pointer-events: none;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        min-height: 100px;
+        content: "";
+        background: linear-gradient( rgb(20, 20, 20) 2%, transparent 5%, transparent 95%, rgb(20, 20, 20) 98%);
+    }
+}
 
 @keyframes click {
     0% {
