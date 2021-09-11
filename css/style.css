@@ -1,107 +1,309 @@
-body{
-    background: black;
+body {
+    background: rgb(20, 20, 20);
     color: white;
     margin: 0;
     max-height: 100%;
     max-width: 100%;
+    font-family: "toppan-bunkyu-mincho-pr6n", serif;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* 縦横中央揃え */
-.center{
+/* オープニング */
+
+.open {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    animation: opening 2s ease 0s 1 normal;
     position: absolute;
-    left: 0; top: 0;
-    width: 100%; height: 98%;
+    left: 0;
+    top: 0;
+    background: black;
+    z-index: 1000;
+}
+
+@keyframes opening {
+    0% {
+        opacity: 1;
+        width: 100%;
+        height: 100%;
+    }
+    20% {
+        opacity: 1;
+    }
+    99.9% {
+        width: 100%;
+        height: 100%;
+    }
+    100% {
+        opacity: 0;
+        width: 0;
+    }
+}
+
+/* タイトル */
+
+header {
+    font-size: 60%;
+    text-align: center;
+    margin: 0 0 4% 0;
+}
+
+h1 {
+    margin: 0;
+}
+
+/* ポスター選択 */
+
+.contents {
     display: flex;
-	justify-content: center;
-	align-items: center;
+    margin: 0 2% 0 2%;
+    text-align: center;
 }
-.w100{
+
+.poster {
+    width: 20%;
+    margin: auto;
+}
+
+.max {
+    max-width: 100%;
+    cursor: pointer;
+}
+
+.max:hover {
+    animation: darken 1s ease 0s 1 normal;
+    filter: brightness(60%);
+}
+
+@keyframes darken {
+    0% {
+        filter: brightness(100%);
+    }
+    100% {
+        filter: brightness(60%);
+    }
+}
+
+/* オーバーレイ */
+
+#pop-up01, #pop-up02, #pop-up03, #pop-up04, #pop-up05 {
+    display: none;
+}
+
+.overlay01, .overlay02, .overlay03, .overlay04, .overlay05 {
+    display: none;
+}
+
+#pop-up01:checked+.overlay01, #pop-up02:checked+.overlay02, #pop-up03:checked+.overlay03, #pop-up04:checked+.overlay04, #pop-up05:checked+.overlay05 {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
     width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background: rgb(20, 20, 20);
+    z-index: 10;
+    /* フェードイン */
+    animation: fadeIn 0.5s ease 0s 1 normal;
 }
-.h100{
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    5% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* ウィンドウ */
+
+.window {
+    width: 80%;
+    height: 80%;
+    margin: 5% auto 5% auto;
+}
+
+.closeArea {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
 }
 
-
-/* タイトル */
-.title {
-    font-size: 38%;
-    text-align: center;
-    margin: 5%;
+.info {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
-h1{
-    margin: 0;
-}
-/* 下部リンク */
-.return {
-    text-align: center;
-    margin: 5%;
-}
-h2{ 
-    font-size:  30%;
-    margin: 0;
-    color: gray;
-}
-
 
 /* ポスター */
-.flexbox{
-    display: flex;
-    margin: 0 5% 0 5%;
-}
-.poster {
-    width:22%;
+
+.imageArea {
+    width: 55%;
     margin: auto;
-    cursor:pointer;
+    z-index: 100;
 }
 
+/* 解説 */
 
-
-/* オーバーレイ */
-#pop-up01{
+#more01, #more02, #more03, #more04 {
     display: none;
 }
-.overlay01{
-    display: none;
-    animation: fadeOut 0.2s ease 0s 1 normal;
-}
-#pop-up01:checked + .overlay01{
-    animation: fadeIn 0.2s ease 0s 1 normal;
 
+.textArea {
+    display: none;
+    overflow-y: hidden;
+    /* フェードイン */
+    animation: fadeIn 1s ease 0s 1 normal;
+}
+
+#more01:checked+.textArea, #more02:checked+.textArea, #more03:checked+.textArea, #more04:checked+.textArea {
     display: block;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+#more01:checked+.textArea:before, #more02:checked+.textArea:before, #more03:checked+.textArea:before, #more04:checked+.textArea:before {
+    pointer-events: none;
     position: absolute;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background: #000000dd;
-    z-index: 10;
-}
-@keyframes fadeIn {
-    0% {opacity: 0}
-    100% {opacity: 1}
-}
-  
-
-
-/* ウィンドウ */
-.window{
-    max-width: 90%;
-    height: 90%;
-    margin: 0 auto 0 auto;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100px;
+    content: "";
+    background: linear-gradient( rgb(20, 20, 20) 5%, transparent 15%, transparent 85%, rgb(20, 20, 20) 95%);
 }
 
-/* ポップポスターサイズ */
-.pop-size{
+.text {
     max-width: 100%;
-    max-height: 100%;
-    margin: 0 auto 0 auto;
+    text-align: justify;
+    margin: 20% 5% 25% 5%;
+}
+
+.number {
+    font-size: 380%;
+    line-height: -10;
+}
+
+.what {
+    font-size: 180%;
+}
+
+.figure {
+    width: 90%;
+    margin: auto auto 10% auto;
+}
+
+.fig {
+    width: 100%;
+}
+
+.cap {
+    text-align: center;
+    font-size: 80%;
 }
 
 /* 閉じる */
-.switch{
-    margin: 5% auto 0 auto;
+
+.closePoint {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.X-close {
+    color: #ffffff;
+    font-size: 200%;
+    cursor: pointer;
+    font-family: sans-serif;
+    padding: 50%;
+    z-index: 30;
+}
+
+.bottomPoint:hover .X-close {
+    animation: click 0.2s ease 0s 1 normal;
     color: #ffffffa1;
-    font-size: 120%;
+}
+
+@keyframes click {
+    0% {
+        color: #ffffffa1;
+    }
+    100% {
+        color: #ffffff;
+    }
+}
+
+/* フッター */
+
+footer {
     text-align: center;
-    cursor:pointer;
-    width:20%;
+    margin: 4% 0 0 0;
+}
+
+.about {
+    margin: auto;
+    padding: 1.5%;
+    color: #ffffff;
+    text-align: center;
+    cursor: pointer;
+    font-size: 90%;
+    width: 5%;
+    filter: brightness(80%);
+}
+
+.about:hover {
+    animation: click 0.1s ease 0s 1 normal;
+    color: #ffffffa1;
+}
+
+.textAbout {
+    overflow-y: hidden;
+    /* フェードイン */
+    animation: fadeIn 1s ease 0s 1 normal;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.textAbout:before {
+    pointer-events: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100px;
+    content: "";
+    background: linear-gradient( rgb(20, 20, 20) 5%, transparent 15%, transparent 85%, rgb(20, 20, 20) 95%);
+}
+
+
+@keyframes click {
+    0% {
+        color: #ffffff;
+    }
+    100% {
+        color: #ffffffa1;
+    }
 }
