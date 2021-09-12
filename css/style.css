@@ -213,10 +213,23 @@ h1 {
     z-index: 100;
 }
 
+.rule {
+    text-align: center;
+    font-size: 120%;
+    width: 60%;
+    margin: 10% auto 10% auto;
+}
+
+/* 携帯のみ（ポスター、ルール表示サイズ） */
+
 @media screen and (max-width:639px) {
     .imageArea {
         width: 97%;
         margin: 30% 0 2% 0;
+    }
+    .rule {
+        width: 80%;
+        margin: 10% auto 10% auto;
     }
 }
 
@@ -229,6 +242,7 @@ h1 {
 /* PCのみ（解説表示切り替え） */
 
 @media screen and (min-width:640px) {
+    
     .textArea {
         display: none;
         overflow-y: auto;
@@ -250,7 +264,7 @@ h1 {
         height: 100%;
         min-height: 100px;
         content: "";
-        background: linear-gradient( rgb(20, 20, 20) 5%, transparent 15%, transparent 85%, rgb(20, 20, 20) 95%);
+        background: linear-gradient( rgb(20, 20, 20) 5%, transparent 10%, transparent 90%, rgb(20, 20, 20) 95%);
     }
 }
 
@@ -270,7 +284,7 @@ h1 {
 }
 
 .figure {
-    width: 90%;
+    width: 70%;
     margin: auto auto 10% auto;
     text-align: center;
 }
