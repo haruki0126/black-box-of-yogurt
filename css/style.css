@@ -1,6 +1,6 @@
 body {
     background: rgb(20, 20, 20);
-    color: white;
+    color: rgb(220, 220, 220);
     margin: 0;
     max-height: 100%;
     max-width: 100%;
@@ -271,7 +271,7 @@ h1 {
 .text {
     max-width: 100%;
     text-align: justify;
-    margin: 20% 5% 25% 5%;
+    margin: 10% 5% 25% 5%;
 }
 
 .number {
@@ -282,6 +282,11 @@ h1 {
 .what {
     font-size: 180%;
 }
+
+.whatAbout {
+    font-size: 250%;
+}
+
 
 .figure {
     width: 70%;
